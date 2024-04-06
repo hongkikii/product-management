@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,7 +31,10 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public List<ProductDto> findAll() {
-        return simpleProductService.findAll();
+    public List<ProductDto> findProducts(@RequestParam(required = false) String name) {
+        if (null == name) {
+            return simpleProductService.findAll();
+        }
+        return simpleProductService.findByNameContaining(name);
     }
 }

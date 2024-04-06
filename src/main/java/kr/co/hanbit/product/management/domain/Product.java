@@ -10,7 +10,11 @@ public class Product {
         this.id = id;
     }
 
-    public boolean sameId(Long id) {
+    public Boolean sameId(Long id) {
         return this.id.equals(id);
+    }
+
+    public Boolean containsName(String name) {
+        return this.name.contains(name);
     }
 }
