@@ -29,4 +29,8 @@ public class ProductController {
         return simpleProductService.findById(id);
     }
 
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public List<ProductDto> findAll() {
+        return simpleProductService.findAll();
+    }
 }
