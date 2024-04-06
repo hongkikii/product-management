@@ -48,4 +48,11 @@ public class SimpleProductService {
                 .toList();
         return productDtos;
     }
+
+    public ProductDto update(ProductDto productDto) {
+        Product product = modelMapper.map(productDto, Product.class);
+        Product updatedProduct = listProductRepository.update(product);
+        ProductDto updatedProductDto = modelMapper.map(updatedProduct, ProductDto.class);
+        return updatedProductDto;
+    }
 }
