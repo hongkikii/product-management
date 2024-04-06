@@ -2,6 +2,8 @@ package kr.co.hanbit.product.management.application;
 
 import kr.co.hanbit.product.management.domain.Product;
 import kr.co.hanbit.product.management.infrastructure.ListProductRepository;
+import kr.co.hanbit.product.management.presentation.ProductDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +11,18 @@ import org.springframework.stereotype.Service;
 public class SimpleProductService {
 
     private ListProductRepository listProductRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
-    SimpleProductService(ListProductRepository listProductRepository) {
+    SimpleProductService(ListProductRepository listProductRepository, ModelMapper modelMapper) {
         this.listProductRepository = listProductRepository;
+        this.modelMapper = modelMapper;
     }
 
-    public Product add(Product product) {
+    public ProductDto add(ProductDto productDto) {
+        Product product = modelMapper.map(productDto, Product.class);
         Product savedProduct = listProductRepository.add(product);
-        return savedProduct;
+        ProductDto savedProductDto = modelMapper.map(savedProduct, ProductDto.class);
+        return savedProductDto;
     }
 }
