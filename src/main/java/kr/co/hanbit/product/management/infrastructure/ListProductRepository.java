@@ -17,4 +17,12 @@ public class ListProductRepository {
         products.add(product);
         return product;
     }
+
+    public Product findById(Long id) {
+        return products.stream()
+                .filter(product -> product.sameId(id))
+                .findFirst()
+                .orElseThrow();
+    }
+
 }

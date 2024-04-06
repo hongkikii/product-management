@@ -1,5 +1,6 @@
 package kr.co.hanbit.product.management.application;
 
+import java.util.List;
 import kr.co.hanbit.product.management.domain.Product;
 import kr.co.hanbit.product.management.infrastructure.ListProductRepository;
 import kr.co.hanbit.product.management.presentation.ProductDto;
@@ -25,4 +26,11 @@ public class SimpleProductService {
         ProductDto savedProductDto = modelMapper.map(savedProduct, ProductDto.class);
         return savedProductDto;
     }
+
+    public ProductDto findById(Long id) {
+        Product product = listProductRepository.findById(id);
+        ProductDto productDto =  modelMapper.map(product, ProductDto.class);
+        return productDto;
+    }
+
 }
