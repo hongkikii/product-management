@@ -53,4 +53,9 @@ public class ListProductRepository {
         products.set(indexToModify, product); // 2
         return product;
     }
+
+    public void delete(Long id) {
+        Product product = this.findById(id);
+        products.remove(product);
+    }
 }

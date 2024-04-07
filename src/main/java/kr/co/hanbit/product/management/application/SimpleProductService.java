@@ -55,4 +55,8 @@ public class SimpleProductService {
         ProductDto updatedProductDto = modelMapper.map(updatedProduct, ProductDto.class);
         return updatedProductDto;
     }
+
+    public void delete(Long id) {
+        listProductRepository.delete(id);
+    }
 }
