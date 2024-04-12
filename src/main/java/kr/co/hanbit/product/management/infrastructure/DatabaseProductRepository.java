@@ -47,7 +47,11 @@ public class DatabaseProductRepository {
     }
 
     public List<Product> findAll() {
-        return Collections.EMPTY_LIST;
+        List<Product> products = namedParameterJdbcTemplate.query(
+                "SELECT * FROM products",
+                new BeanPropertyRowMapper<>(Product.class)
+        );
+        return products;
     }
 
     public List<Product> findByNameContaining(String name) {
