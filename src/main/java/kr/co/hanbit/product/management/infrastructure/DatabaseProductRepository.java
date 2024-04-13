@@ -66,7 +66,11 @@ public class DatabaseProductRepository {
     }
 
     public Product update(Product product) {
-        return null;
+        SqlParameterSource namedParameter = new BeanPropertySqlParameterSource(product);
+
+        namedParameterJdbcTemplate.update("UPDATE products SET name=:name, price=:price, "
+                        + "amount=:amount WHERE id=:id", namedParameter);
+        return product;
     }
 
     public void delete(Long id) {

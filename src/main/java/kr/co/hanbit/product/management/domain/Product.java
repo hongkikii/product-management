@@ -19,10 +19,6 @@ public class Product {
     @Min(0)
     private Integer amount;
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -33,6 +29,14 @@ public class Product {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Integer getPrice() {
