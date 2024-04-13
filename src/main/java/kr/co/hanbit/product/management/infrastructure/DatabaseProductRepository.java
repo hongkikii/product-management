@@ -74,6 +74,11 @@ public class DatabaseProductRepository {
     }
 
     public void delete(Long id) {
-        // do nothing
+        SqlParameterSource namedParameter = new MapSqlParameterSource("id", id);
+
+        namedParameterJdbcTemplate.update(
+                "DELETE FROM products WHERE id = :id",
+                namedParameter
+        );
     }
 }
