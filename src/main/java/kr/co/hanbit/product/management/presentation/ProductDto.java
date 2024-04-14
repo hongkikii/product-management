@@ -1,6 +1,7 @@
 package kr.co.hanbit.product.management.presentation;
 
 import jakarta.validation.constraints.NotNull;
+import kr.co.hanbit.product.management.domain.Product;
 
 public class ProductDto {
     private Long id;
@@ -32,5 +33,15 @@ public class ProductDto {
 
     public Integer getAmount() {
         return amount;
+    }
+
+    public ProductDto() {
+
+    }
+
+    public ProductDto(String name, Integer price, Integer amount) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
     }
 }
