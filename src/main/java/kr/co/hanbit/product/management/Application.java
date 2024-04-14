@@ -2,8 +2,8 @@ package kr.co.hanbit.product.management;
 
 import java.sql.Connection;
 import javax.sql.DataSource;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration.AccessLevel;
+//import org.modelmapper.ModelMapper;
+//import org.modelmapper.config.Configuration.AccessLevel;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,14 +17,14 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean
-	public ModelMapper modelMapper() {
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration()
-				.setFieldAccessLevel(AccessLevel.PRIVATE)
-				.setFieldMatchingEnabled(true);
-		return modelMapper;
-	}
+//	@Bean
+//	public ModelMapper modelMapper() {
+//		ModelMapper modelMapper = new ModelMapper();
+//		modelMapper.getConfiguration()
+//				.setFieldAccessLevel(AccessLevel.PRIVATE)
+//				.setFieldMatchingEnabled(true);
+//		return modelMapper;
+//	}
 
 	@Bean
 	@Profile("prod")

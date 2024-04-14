@@ -6,6 +6,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 public class Product {
+
+    public Product() {
+
+    }
+
+    public Product(Long id, String name, Integer price, Integer amount) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+    }
+
     private Long id;
 
     @Size(min = 1, max = 100)
@@ -18,6 +30,10 @@ public class Product {
     @Max(9_999)
     @Min(0)
     private Integer amount;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -45,10 +61,6 @@ public class Product {
 
     public Integer getAmount() {
         return amount;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Boolean sameId(Long id) {

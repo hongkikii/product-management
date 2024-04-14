@@ -4,6 +4,24 @@ import jakarta.validation.constraints.NotNull;
 import kr.co.hanbit.product.management.domain.Product;
 
 public class ProductDto {
+
+    public ProductDto() {
+
+    }
+
+    public ProductDto(String name, Integer price, Integer amount) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+    }
+
+    public ProductDto(Long id, String name, Integer price, Integer amount) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+    }
+
     private Long id;
 
     @NotNull
@@ -35,13 +53,23 @@ public class ProductDto {
         return amount;
     }
 
-    public ProductDto() {
-
+    public static Product toEntity(ProductDto productDto) {
+        Product product = new Product(
+            productDto.getId(),
+            productDto.getName(),
+            productDto.getPrice(),
+            productDto.getAmount()
+        );
+        return product;
     }
 
-    public ProductDto(String name, Integer price, Integer amount) {
-        this.name = name;
-        this.price = price;
-        this.amount = amount;
+    public static ProductDto toDto(Product product) {
+        ProductDto productDto = new ProductDto(
+                product.getId(),
+                product.getName(),
+                product.getPrice(),
+                product.getAmount()
+        );
+        return productDto;
     }
 }
